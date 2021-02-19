@@ -1,4 +1,4 @@
-React app - bookStore
+bookstore react-redux app
 
 # Getting Started with Create React App
 
