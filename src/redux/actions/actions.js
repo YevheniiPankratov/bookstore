@@ -1,4 +1,4 @@
-import { BOOKS_LOADED } from "./actionsTypes"
+import { BOOKS_ERROR, BOOKS_LOADED, BOOKS_REQUESTED } from "./actionsTypes"
 
 const booksLoaded = (books) => {
     return {
@@ -7,6 +7,21 @@ const booksLoaded = (books) => {
     }
 }
 
+const booksRequested = () => {
+    return {
+        type: BOOKS_REQUESTED
+    }
+}
+
+const booksError = (error) => {
+    return {
+        type: BOOKS_ERROR,
+        payload: error
+    }
+}
+
 export {
-    booksLoaded
+    booksLoaded,
+    booksRequested,
+    booksError
 }

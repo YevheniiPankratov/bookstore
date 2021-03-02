@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './bookItem.css'
 
 const BookItem = ({book}) => {
@@ -8,7 +8,7 @@ const BookItem = ({book}) => {
         <img src={coverImg} alt={title}/>
     </div>
     <div className='bookDetails'>
-        <a href='#' className='bookTitle'>{title}</a>
+        <span className='bookTitle'>{title}</span>
         <div className='bookAuthor'>{author}</div>
         <div className='bookPublicationDate'>Publication date: {publicationDate}</div>
         <div className='bookPrice'>${price}</div>
