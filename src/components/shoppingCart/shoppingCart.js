@@ -1,7 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bookDecFromCart, bookDelFromCart,bookAddedToCart } from '../../redux/actions/actions';
 import './shoppingCart.css';
 
-const ShoppingCart = ({numItems, total}) => {
+const ShoppingCart = ({cartItems, total, onInc, onDec, onDel}) => {
+    const renderItemRow = (item, index) => {
+        const {id, title, count, total} = item
+        return (
+            <tr key={id}>
+            <td>{index + 1}</td>
+            <td>{title}</td>
+            <td>{count}</td>
+            <td>${total}</td>
+            <td>
+            <button onClick={() => onDel(id)}
+            className="btn btn-outline-danger btn-sm float-right">
+                <i className="fa fa-trash-o" />
+            </button>
+            <button onClick={() => onInc(id)}
+             className="btn btn-outline-success btn-sm float-right">
+                <i className="fa fa-plus-circle" />
+            </button>
+            <button onClick={() => onDec(id)}
+             className="btn btn-outline-warning btn-sm float-right">
+                <i className="fa fa-minus-circle" />
+            </button>
+            </td>
+        </tr>
+        )
+    }
     return (
         <div className='shoppingCart'>
             <h2>Order</h2>
@@ -11,29 +38,13 @@ const ShoppingCart = ({numItems, total}) => {
                         <th>#</th>
                         <th>Book</th>
                         <th>Count</th>
-                        <th>Price</th>
+                        <th>Total</th>
                         <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Site Reliability Engineering</td>
-                        <td>2</td>
-                        <td>$40</td>
-                        <td>
-                        <button className="btn btn-outline-danger btn-sm float-right">
-                            <i className="fa fa-trash-o" />
-                        </button>
-                        <button className="btn btn-outline-success btn-sm float-right">
-                            <i className="fa fa-plus-circle" />
-                        </button>
-                        <button className="btn btn-outline-warning btn-sm float-right">
-                            <i className="fa fa-minus-circle" />
-                        </button>
-                        </td>
-                    </tr>
+                    { cartItems.map(renderItemRow) }
                 </tbody>
             </table>
             <div className='total'>
@@ -43,4 +54,16 @@ const ShoppingCart = ({numItems, total}) => {
     )
 }
 
-export default ShoppingCart;
+const mapStateToProps = ({cartItems, orderTotal}) => {
+    return {
+        cartItems, total: orderTotal
+    }
+}
+
+const mapDispatchToProps = {
+    
+        onInc: bookAddedToCart,
+        onDec: bookDecFromCart,
+        onDel: bookDelFromCart,
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ShoppingCart);
