@@ -41,12 +41,10 @@ const bookDelFromCart = (bookId) => {
     }
 }
 
-const fetchBooks = (dispatch, bookstoreService) => () => {
+const fetchBooks = (bookstoreService) => () => (dispatch) => {
     dispatch(booksRequested())
     bookstoreService.getBooks()
-    .then((data) => {
-        dispatch(booksLoaded(data))
-    })
+    .then((data) => dispatch(booksLoaded(data)))
     .catch((error) => dispatch(booksError(error)))
 }
 

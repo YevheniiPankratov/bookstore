@@ -54,14 +54,13 @@ const ShoppingCart = ({cartItems, total, onInc, onDec, onDel}) => {
     )
 }
 
-const mapStateToProps = ({cartItems, orderTotal}) => {
+const mapStateToProps = ({shoppingCart: {cartItems, orderTotal}}) => {
     return {
         cartItems, total: orderTotal
     }
 }
 
 const mapDispatchToProps = {
-    
         onInc: bookAddedToCart,
         onDec: bookDecFromCart,
         onDel: bookDelFromCart,
