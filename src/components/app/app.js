@@ -8,7 +8,7 @@ import StoreHeader from '../storeHeader/storeHeader'
 const App = () => {
     return ( 
             <main role='main' className='container'>
-            <StoreHeader numItems={5} total={210}/>
+            <StoreHeader/>
                 <Switch>
                 <Route exact path='/' component={HomePage}/>
                 <Route path='/cart' component={CartPage}/>

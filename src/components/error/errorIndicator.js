@@ -2,7 +2,10 @@ import React from 'react';
 import './errorIndicator.css';
 
 const ErrorIndicator = () => {
-    return <div>Error!</div>;
+    return <div className='errorIndicator'>
+              <h1>Error! Sorry, everything will be fixed soon!</h1>
+              <h2>Please try reloading the page</h2>
+            </div>;
 }
 
 export default ErrorIndicator;

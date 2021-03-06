@@ -13,6 +13,7 @@ const updateCart = (cartItems, item, index) => {
         return [...cartItems,
         item]
     }
+
     return [
         ...cartItems.slice(0, index),
         item,
@@ -41,16 +42,17 @@ const updateOrder = (state, bookId, quantity) => {
     const book = books.find(({id}) => id === bookId)
     const itemIndex = cartItems.findIndex(({id}) => id === bookId);
     const item = cartItems[itemIndex];
-            
     const newBook = updateCartItem(book, item, quantity)
-            
+    
+    const ordTotal = cartItems.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.total;
+      }, book.price);
+    
           return {
-            orderTotal: 0, 
+            orderTotal: ordTotal, 
             cartItems: updateCart(cartItems, newBook, itemIndex)
             }
 }
-
-
 
 const updateShoppingCart = (state, action) => {
     if(state === undefined) {

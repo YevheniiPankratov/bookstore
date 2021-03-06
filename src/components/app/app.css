@@ -1,1 +1,8 @@
-.app {}
+body {
+	background: linear-gradient(90deg, #b9deed, #efefef);
+    font-weight: 500;
+}
+
+.app {
+    
+}

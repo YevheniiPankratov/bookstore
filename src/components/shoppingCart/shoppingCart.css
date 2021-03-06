@@ -12,3 +12,18 @@
     margin-left: 5px;
     margin-top: 5px;
   }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+  }
+
+  .table thead th {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+  }
+
+  .table tr {
+    border-bottom: 2px solid black;
+  }
