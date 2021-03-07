@@ -3,7 +3,7 @@ import './errorIndicator.css';
 
 const ErrorIndicator = () => {
     return <div className='errorIndicator'>
-              <h1>Error! Sorry, everything will be fixed soon!</h1>
+              <h1>Error! Sorry, it could be a server error!</h1>
               <h2>Please try reloading the page</h2>
             </div>;
 }
